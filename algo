@@ -1,0 +1,31 @@
+function stringFormat(obj) {
+    let str = obj.rules
+    formatString = formatString+'('
+    if(Array.isArray(str)){
+        for(let i=0;i<str.length;i++){
+          if(Array.isArray(str[i].rules)){
+            stringFormat(str[i]);
+            debugger;
+            if(i!==str.length-1)
+            {
+           formatString = formatString + obj.conditionOperator
+            }
+            else {
+                formatString = formatString + ')'
+            }
+            continue
+          }
+          if(i!==str.length-1)
+          {
+            
+            formatString = formatString+str[i].leftSide+str[i].operator+str[i].rightSide + (obj.conditionOperator!==undefined?obj.conditionOperator:'yogi') ;
+
+          }
+          else{
+          formatString = formatString+str[i].leftSide+str[i].operator+str[i].rightSide +')';
+            
+          }
+        }
+    }
+  
+  }
